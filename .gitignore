@@ -1,0 +1,8 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.ncb
+*.opendb
+*.VC.db
+*.VC.VC.opendb
