@@ -82,6 +82,38 @@ Matrix Matrix::transpose() const {
 	return result; 
 }
 
+double Matrix::determinant() const {
+	int res = 0;
+	if (rows() != columns()) {
+		throw std::invalid_argument("Matrix is not square"); 
+	}
+
+	if (rows() == 1) { // general case for 1x1
+		return values[0][0];
+	}
+
+	if (rows() == 2) { // general case for 2x2
+		return values[0][0] * values[1][1] - values[0][1] * values[1][0];
+
+	}
+	
+	for (int p = 0; p < columns(); p++) {
+		Matrix subMatrix(rows() - 1, columns() - 1);
+		for (int i = 1; i < rows(); i++) {
+			int sub_j = 0;
+			for (int j = 0; j < columns(); j++) {
+				if (j == p) continue;
+				subMatrix(i - 1, sub_j) = values[i][j];
+				sub_j++;
+			}
+		}
+		res += (p % 2 == 0 ? 1 : -1) * values[0][p] * subMatrix.determinant();
+	}
+	
+	return res;
+
+}
+
 void Matrix::print() const {
 	std::cout << "[" << std::endl;
 	for (int i = 0; i < rows(); i++) {

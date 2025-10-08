@@ -21,5 +21,7 @@ int main()
 	Matrix m4 = m3.transpose();
 	std::cout << "the transpose of m3 is then ";
 	m4.print();
+	std::cout << "the determinant of this matrix m4 is : " << m4.determinant() << std::endl;
+
 	return 0;
 }

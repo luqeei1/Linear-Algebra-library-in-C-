@@ -29,5 +29,6 @@ public:
 	Matrix operator-(const Matrix& other) const;
 	Matrix operator*(const Matrix& other) const;
 	Matrix transpose() const;
+	double determinant() const;
 	void print() const;
 };
